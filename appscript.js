@@ -38,6 +38,19 @@ const familyData = {
     ]
   },
 
+   "Uncle Lee": {
+    passcode: null,
+    subscriptions: [],
+    points: {
+      place: 9,
+      score: 150000,
+      lastUpdated: "Saturday 28th February 2026, 14:43"
+    },
+    vouchers: [
+      { name: "£1.50 Voucher", status: "Active", expires: "01/06/2026", quantity: 1 }
+    ]
+  },
+
   "Grandad Steve": {
     passcode: null,
     subscriptions: [
@@ -71,6 +84,19 @@ const familyData = {
       place: 3,
       score: 11450 + 150000,
       lastUpdated: "Saturday 28th February 2026, 13:00"
+    },
+    vouchers: [
+      { name: "£1.50 Voucher", status: "Active", expires: "01/06/2026", quantity: 1 }
+    ]
+  },
+
+   "Auntie Emily": {
+    passcode: null,
+    subscriptions: [],
+    points: {
+      place: 8,
+      score: 150000,
+      lastUpdated: "Saturday 28th February 2026, 14:41"
     },
     vouchers: [
       { name: "£1.50 Voucher", status: "Active", expires: "01/06/2026", quantity: 1 }
