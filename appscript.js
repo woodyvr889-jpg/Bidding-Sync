@@ -182,7 +182,6 @@ sortedUsers.forEach((user, index) => {
 /* ===============================
    LOGIN LOGIC
 ================================= */
-
 let selectedUser = null;
 
 function selectUser(name) {
@@ -215,7 +214,6 @@ function verifyPasscode() {
 /* ===============================
    HUB RENDERING
 ================================= */
-
 if (window.location.pathname.includes("hub.html")) {
   const user = localStorage.getItem("loggedInUser");
 
@@ -282,6 +280,27 @@ function loadHub(user) {
       </div>
     `;
   });
+
+  /* ===============================
+     MOST RECENT UPDATES
+  ================================= */
+  const updatesContent = document.getElementById("updatesContent");
+
+  const recentUpdates = [
+    {
+      date: "31.1",
+      title: "New Hub Features",
+      details: "Added a new section for recent updates and minor bug fixes across the hub."
+    }
+    // You can add more updates here
+  ];
+
+  updatesContent.innerHTML = recentUpdates.map(update => `
+    <div style="margin-top:10px; padding:10px; border-left: 3px solid #FFD700;">
+      <p><strong>${update.date}</strong> — <strong>${update.title}</strong></p>
+      <p>${update.details}</p>
+    </div>
+  `).join("");
 }
 
 function logout() {
