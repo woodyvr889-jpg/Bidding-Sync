@@ -217,32 +217,6 @@ function verifyPasscode() {
 
 }
 
-/* ===============================
-   SCROLL ANIMATIONS
-================================= */
-
-const cards = document.querySelectorAll(".card");
-
-function revealCards() {
-
-  const trigger = window.innerHeight * 0.9;
-
-  cards.forEach(card => {
-
-    const cardTop = card.getBoundingClientRect().top;
-
-    if(cardTop < trigger) {
-      card.classList.add("visible");
-    }
-
-  });
-
-}
-
-window.addEventListener("scroll", revealCards);
-
-window.addEventListener("load", revealCards);
-
 
 /* ===============================
    HUB RENDERING
@@ -346,3 +320,27 @@ function logout() {
   window.location.href = "index.html";
 
 }
+
+
+// ===============================
+// SCROLL FADE-IN FOR SECTIONS
+// ===============================
+const faders = document.querySelectorAll("section");
+
+const appearOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.style.opacity = 1;
+    entry.target.style.transform = "translateY(0)";
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
