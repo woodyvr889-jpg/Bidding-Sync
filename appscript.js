@@ -28,7 +28,7 @@ const familyData = {
     ],
     points: {
       place: 2,
-      score: 164650 + 150000 + 100000, // Added 150,000 points
+      score: 164650 + 150000 + 100000, // Added points
       lastUpdated: "Sunday 1st March 2026, 12:55"
     },
     vouchers: [
@@ -38,13 +38,13 @@ const familyData = {
     ]
   },
 
-   "Uncle Lee": {
+  "Uncle Lee": {
     passcode: null,
     subscriptions: [],
     points: {
       place: 9,
-      score: 150000 + 100000,
-      lastUpdated: "SSunday 1st March 2026, 12:55"
+      score: 150000 + 100000,  // ✅ fixed extra comma
+      lastUpdated: "Sunday 1st March 2026, 12:55"
     },
     vouchers: [
       { name: "£1.50 Voucher", status: "Active", expires: "01/06/2026", quantity: 1 }
@@ -69,7 +69,7 @@ const familyData = {
     ],
     points: {
       place: 1,
-      score: 229050 + 150000 + 100000, // Added 150,000 points
+      score: 229050 + 150000 + 100000,
       lastUpdated: "Sunday 1st March 2026, 12:55"
     },
     vouchers: [
@@ -90,7 +90,7 @@ const familyData = {
     ]
   },
 
-   "Auntie Emily": {
+  "Auntie Emily": {
     passcode: null,
     subscriptions: [],
     points: {
@@ -179,7 +179,6 @@ sortedUsers.forEach((user, index) => {
   familyData[user[0]].points.place = index + 1;
 });
 
-
 /* ===============================
    LOGIN LOGIC
 ================================= */
@@ -187,7 +186,6 @@ sortedUsers.forEach((user, index) => {
 let selectedUser = null;
 
 function selectUser(name) {
-
   selectedUser = name;
 
   if (!familyData[name]) {
@@ -201,11 +199,9 @@ function selectUser(name) {
     localStorage.setItem("loggedInUser", name);
     window.location.href = "hub.html";
   }
-
 }
 
 function verifyPasscode() {
-
   const input = document.getElementById("passcodeInput").value;
 
   if (input === familyData[selectedUser].passcode) {
@@ -214,16 +210,13 @@ function verifyPasscode() {
   } else {
     alert("Wrong passcode");
   }
-
 }
-
 
 /* ===============================
    HUB RENDERING
 ================================= */
 
 if (window.location.pathname.includes("hub.html")) {
-
   const user = localStorage.getItem("loggedInUser");
 
   if (!user) {
@@ -231,32 +224,23 @@ if (window.location.pathname.includes("hub.html")) {
   } else {
     loadHub(user);
   }
-
 }
 
-
 function loadHub(user) {
-
   const data = familyData[user];
 
   document.getElementById("welcomeText").innerText =
     `Welcome, ${user}`;
 
-
   /* SUBSCRIPTIONS */
-
   const subs = document.getElementById("subscriptionsSection");
-
   subs.innerHTML = "<h2>Your Subscriptions</h2>";
 
   if (data.subscriptions.length === 0) {
-
     subs.innerHTML += "<p>No active subscriptions.</p>";
-
   }
 
   data.subscriptions.forEach(sub => {
-
     subs.innerHTML += `
       <div style="margin-top:15px;">
         <strong>${sub.name}</strong> - ${sub.status}
@@ -267,14 +251,10 @@ function loadHub(user) {
         </div>
       </div>
     `;
-
   });
 
-
   /* POINTS */
-
   const points = document.getElementById("pointsSection");
-
   points.innerHTML = `
     <h2>Your Points</h2>
     <p><strong>Leaderboard Place:</strong> ${data.points.place}</p>
@@ -283,21 +263,15 @@ function loadHub(user) {
     <p style="margin-top:10px;">🏅 50 points are added weekly to everyone.</p>
   `;
 
-
   /* VOUCHERS */
-
   const vouchers = document.getElementById("voucherSection");
-
   vouchers.innerHTML = "<h2>Your Vouchers</h2>";
 
   if (data.vouchers.length === 0) {
-
     vouchers.innerHTML += "<p>No vouchers available.</p>";
-
   }
 
   data.vouchers.forEach(v => {
-
     vouchers.innerHTML += `
       <div style="margin-top:10px;">
         <p>
@@ -307,24 +281,17 @@ function loadHub(user) {
         </p>
       </div>
     `;
-
   });
-
 }
-
 
 function logout() {
-
   localStorage.removeItem("loggedInUser");
-
   window.location.href = "index.html";
-
 }
 
-
-// ===============================
-// SCROLL FADE-IN FOR SECTIONS
-// ===============================
+/* ===============================
+   SCROLL FADE-IN FOR SECTIONS
+================================= */
 const faders = document.querySelectorAll("section");
 
 const appearOptions = {
