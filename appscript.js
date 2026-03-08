@@ -8,8 +8,7 @@ const familyData = {
     passcode: null,
     subscriptions: [
       {
-        name: "V.I.M. LORD. To activate your perks, please tell James what perks you want active. Whichever ones are active, shall renew every month at payment.
-           REMINDER: Your £5 subscription has not been paid, make sure to pay it!",
+        name: "V.I.M. LORD. To activate your perks, please tell James what perks you want active. Whichever ones are active, shall renew every month at payment.",
         status: "£5/month, every 7th of the month.",
         perks: [
           { name: "Top Priority", desc: "Absolute top priority in all Gorilla Tag events" },
